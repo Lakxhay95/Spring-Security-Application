@@ -1,5 +1,6 @@
 package com.jfs.SpringSecurityApp.controller;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,6 +24,7 @@ public class Test {
         return "Car loan interest drop upto 2%";
     }
     @GetMapping("/check")
+    @PreAuthorize("hasRole('USER') or hasRole ('ADMIN')") // role based access control
     public String checkBalance() {
         return "10000000000";
     }
